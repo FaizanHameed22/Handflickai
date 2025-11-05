@@ -17,7 +17,7 @@ const Home = () => {
             <span className="gradient-text">Through Hands</span>
           </h1>
           <p className="hero-subtitle">
-            Breaking communication barriers with real-time sign language translation powered by artificial intelligence
+           Helping teachers and students communicate through AI-powered sign language translation
           </p>
           <div className="hero-buttons">
             <button className="primary-btn">Try Demo</button>

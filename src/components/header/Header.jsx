@@ -1,58 +1,23 @@
+// src/components/Header.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({ currentPage }) => {
-  const handleNavClick = (page) => {
-    if (window.navigateTo) {
-      window.navigateTo(page);
-    }
-  };
-
+function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        <div className="logo-section" onClick={() => handleNavClick('home')} style={{cursor: 'pointer'}}>
-          {/* <div className="logo-icon">
-            {/* <span className="hand-emoji">👋</span> */}
-          {/* </div> */}
-          <h1 className="logo-text">Handflick<span className="ai-text">.ai</span></h1>
-        </div>
-        
-        <nav className="nav-menu">
-          <a 
-            href="#home" 
-            className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
-          >
-            Home
-          </a>
-          <a 
-            href="#features" 
-            className={`nav-link ${currentPage === 'features' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick('home'); }}
-          >
-            Features
-          </a>
-          <a 
-            href="#about" 
-            className={`nav-link ${currentPage === 'about' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick('about'); }}
-          >
-            About
-          </a>
-          <a 
-            href="#contact" 
-            className={`nav-link ${currentPage === 'contact' ? 'active' : ''}`}
-            onClick={(e) => { e.preventDefault(); handleNavClick('contact'); }}
-          >
-            Contact
-          </a>
+        <Link to="/" className="logo">
+          <span className="logo-icon">👋</span>
+          <span className="logo-text">HandFlickAI</span>
+        </Link>
+        <nav className="nav">
+          <Link to="/ai-tools" className="nav-link">AI Tools</Link>
+          <Link to="/" className="nav-link">Home</Link>
         </nav>
-
-        <button className="cta-button" onClick={() => handleNavClick('home')}>Get Started</button>
       </div>
     </header>
   );
-};
+}
 
 export default Header;

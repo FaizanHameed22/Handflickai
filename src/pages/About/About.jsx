@@ -14,13 +14,13 @@ const About = () => {
           <div className="mission-content">
             <h2 className="section-heading">Our Mission</h2>
             <p className="mission-text">
-              At Handflick.ai, we believe communication is a fundamental human right. Our mission is to break down 
-              barriers between the deaf and hearing communities by leveraging cutting-edge artificial intelligence 
-              to provide real-time, accurate sign language translation.
-            </p>
+              At Handflick.ai, we believe that communication is the bridge to learning and understanding.
+Our mission is to empower deaf and mute students and teachers by using advanced artificial intelligence to enable real-time, accurate sign language translation.
+We aim to create classrooms where every student can express, learn, and participate freely, and every teacher can communicate effectively, regardless of hearing ability.
+         </p>
             <p className="mission-text">
-              We're building a world where sign language is universally understood, creating inclusive spaces for 
-              everyone to connect, learn, and thrive together.
+             Together, we’re building an inclusive educational environment where sign language becomes a universal tool for connection, learning, and growth.
+   
             </p>
           </div>
         </section>
