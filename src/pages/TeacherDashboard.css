@@ -1,0 +1,241 @@
+/* src/pages/TeacherDashboard.css */
+.dashboard-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .dashboard-layout {
+    display: flex;
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .classroom-form,
+  .student-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #5856d6;
+  }
+  
+  .code-input-group,
+  .student-input-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .code-input-group input,
+  .student-input-group input {
+    flex: 1;
+  }
+  
+  .generate-button,
+  .add-button {
+    padding: 0.8rem 1.2rem;
+    background-color: #5856d6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+  }
+  
+  .generate-button:hover,
+  .add-button:hover {
+    background-color: #4745b5;
+  }
+  
+  .create-button {
+    padding: 0.9rem;
+    background-color: #5856d6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s;
+  }
+  
+  .create-button:hover {
+    background-color: #4745b5;
+  }
+  
+  .classroom-info {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f0ff;
+    border-radius: 8px;
+    border-left: 4px solid #5856d6;
+  }
+  
+  .classroom-info p {
+    margin: 0.5rem 0;
+    color: #333;
+  }
+  
+  .code-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background-color: #5856d6;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  .students-list h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .students-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .student-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .student-item:hover {
+    background-color: #e9ecef;
+  }
+  
+  .remove-button {
+    padding: 0.3rem 0.6rem;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+  }
+  
+  .remove-button:hover {
+    background-color: #c82333;
+  }
+  
+  .empty-state {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .start-class-section {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .start-class-button {
+    padding: 1.2rem 3rem;
+    background: linear-gradient(135deg, #5856d6 0%, #7b68ee 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(88, 86, 214, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .start-class-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(88, 86, 214, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-layout {
+      flex-direction: column;
+    }
+    
+    .dashboard-main {
+      padding: 1rem;
+    }
+    
+    .dashboard-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .code-input-group,
+    .student-input-group {
+      flex-direction: column;
+    }
+  }
