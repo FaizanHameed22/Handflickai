@@ -1,0 +1,265 @@
+/* src/pages/StudentDashboard.css */
+.dashboard-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .dashboard-layout {
+    display: flex;
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .dashboard-header {
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .join-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: border-color 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #5856d6;
+  }
+  
+  .input-hint {
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+  }
+  
+  .join-button {
+    padding: 0.9rem;
+    background-color: #5856d6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .join-button:hover {
+    background-color: #4745b5;
+  }
+  
+  .joined-info {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: #f0fff4;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    text-align: center;
+  }
+  
+  .success-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .class-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+  
+  .class-code-display {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .enter-classroom-button {
+    padding: 0.8rem 2rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .enter-classroom-button:hover {
+    background-color: #218838;
+  }
+  
+  .classes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .class-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .class-item:hover {
+    background-color: #e9ecef;
+  }
+  
+  .class-icon {
+    font-size: 2.5rem;
+  }
+  
+  .class-details {
+    flex: 1;
+  }
+  
+  .class-details h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+  }
+  
+  .class-details p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .enter-button {
+    padding: 0.6rem 1.5rem;
+    background-color: #5856d6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .enter-button:hover {
+    background-color: #4745b5;
+  }
+  
+  .empty-state {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .quick-access-section {
+    margin-top: 2rem;
+  }
+  
+  .quick-access-section h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .quick-access-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  
+  .quick-access-card:hover {
+    border-color: #5856d6;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(88, 86, 214, 0.2);
+  }
+  
+  .quick-icon {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-layout {
+      flex-direction: column;
+    }
+    
+    .dashboard-main {
+      padding: 1rem;
+    }
+    
+    .dashboard-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .quick-access-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
