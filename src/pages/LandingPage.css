@@ -1,141 +1,303 @@
-/* src/pages/LandingPage.css */
+/* Import Google Fonts for accessibility and branding */
+@import url('https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap');
+
 .landing-page {
-    min-height: 100vh;
-    display: flex;
+  min-height: 100vh;
+  background: #F5FAFF; /* Light, soft neutral for inclusivity and approachability */
+  color: #1B2847; /* Softer dark for text */
+  font-family: 'Inter', 'Poppins', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.landing-header {
+  background: #FFFFFF;
+  padding: 1.2rem 0;
+  box-shadow: 0 2px 12px #00c2cb11;
+}
+.landing-header__container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+.logo-landing {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00C2CB;
+  letter-spacing: -1px;
+  outline: none;
+}
+.logo-ai {
+  color: #FFD60A;
+  font-weight: 700;
+}
+.logo-icon {
+  margin-right: 0.5rem;
+  font-size: 2.1rem;
+}
+
+/* Main content base */
+.landing-main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* HERO SECTION */
+.landing-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45vh;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  background: linear-gradient(120deg, #F5FCFF 60%, #EAFEFF 100%);
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 8px 32px #00c2cb09, 0 1.5px 10px #0001;
+}
+.landing-hero__content {
+  max-width: 590px;
+  margin: 0 auto;
+  text-align: center;
+}
+.landing-hero__title {
+  font-size: 2.85rem;
+  line-height: 1.18;
+  letter-spacing: -1px;
+  font-weight: 700;
+  color: #15245c;
+  margin-bottom: 1.1rem;
+}
+.landing-hero__subtitle {
+  font-size: 1.23rem;
+  color: #087985;
+  margin-bottom: 1.9rem;
+  font-weight: 600;
+}
+.landing-hero__actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  padding: 1.08rem 2.4rem;
+  border-radius: 2.2rem;
+  border: none;
+  background: #FFD60A;
+  color: #111;
+  box-shadow: 0 2px 12px #ffd60a30;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.23s, background 0.15s;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+.cta-button:focus {
+  outline: 2px solid #00C2CB;
+}
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 22px #ffd60a66, 0 1px 2px #0001;
+  background: #fff200;
+  color: #0A0A23;
+}
+.cta-button--student {
+  background: #00C2CB;
+  color: #0A0A23;
+}
+.cta-button--student:hover {
+  background: #09e2ef;
+  color: #1B1B3A;
+}
+.cta-button--teacher {
+  background: #FFD60A;
+  color: #0A0A23;
+}
+
+/* ABOUT SECTION */
+.landing-about {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 2.2rem 1.5rem 1.2rem 1.5rem;
+  background: #FFFFFF;
+  border-radius: 1.08rem;
+  box-shadow: 0 3px 18px #91efff22;
+}
+.landing-about__visual {
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  gap: 1.16rem;
+  user-select: none;
+}
+.about-hand-icon {
+  font-size: 3rem;
+}
+.about-arrow {
+  font-size: 2.3rem;
+  color: #FFD60A;
+}
+.about-text-icon {
+  font-size: 2.8rem;
+}
+.landing-about__desc {
+  min-width: 240px;
+}
+.landing-about__desc h2 {
+  font-size: 1.51rem;
+  font-weight: 700;
+  color: #005661;
+  margin-bottom: 0.5rem;
+}
+.landing-about__summary {
+  font-size: 1.12rem;
+  color: #087985;
+  font-weight: 500;
+}
+
+/* FEATURES SECTION */
+.landing-features {
+  max-width: 1080px;
+  margin: 0 auto 2.5rem auto;
+  padding: 2.4rem 1.3rem 1.2rem 1.3rem;
+  border-radius: 1.2rem;
+  background: #FFFFFF;
+  box-shadow: 0 4px 22px #00c2cb13;
+}
+.landing-features__title {
+  text-align: center;
+  color: #00c2cb;
+  font-size: 1.35rem;
+  letter-spacing: 0.2px;
+  font-weight: 700;
+  margin-bottom: 2.2rem;
+}
+.landing-features__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1.7rem;
+}
+@media (max-width: 700px) {
+  .landing-features__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+}
+.feature-card {
+  background: #F9FBFC;
+  border-radius: 1.2rem;
+  box-shadow: 0 3px 14px #00c2cb14;
+  padding: 2.12rem 1.3rem 2.0rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 0.9rem;
+  transition: transform 0.12s, box-shadow 0.21s;
+  min-height: 160px;
+  cursor: pointer;
+  outline: none;
+  border: 1.5px solid #E7ECEF;
+  color: #222b45;
+}
+.feature-card:focus, .feature-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 23px #FFD60A25, 0 1.5px 7px #00C2CB22;
+}
+.feature-card__icon {
+  font-size: 2.6rem;
+  margin-bottom: 0.4rem;
+}
+.feature-card__label {
+  font-size: 1.09rem;
+  color: #00BDBE;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+}
+
+/* FOOTER */
+.landing-footer {
+  background: #FAFAFA;
+  color: #476985;
+  border-radius: 2rem 2rem 0 0;
+  text-align: center;
+  box-shadow: 0 -2px 16px #00c2cb09;
+  padding: 2.18rem 1rem 1.2rem 1rem;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+.footer-brand {
+  font-weight: 700;
+  color: #FFD60A;
+}
+.footer-links {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+.footer-link {
+  color: #00C2CB;
+  font-size: 1rem;
+  text-decoration: underline dotted;
+  transition: color 0.16s;
+}
+.footer-link:hover, .footer-link:focus {
+  color: #FFD60A;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 800px) {
+  .landing-hero__title { font-size: 2.0rem; }
+  .landing-hero__subtitle { font-size: 1.01rem; }
+  .landing-main { gap: 2rem; }
+  .landing-about, .landing-features { padding: 1.2rem 0.6rem; }
+}
+@media (max-width: 600px) {
+  .landing-header__container { padding: 0 0.5rem; }
+  .logo-landing { font-size: 1.43rem; }
+  .landing-about {
     flex-direction: column;
+    border-radius: 0.7rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
   }
-  
-  .landing-header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
-  }
-  
-  .landing-header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  
-  .logo-landing {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #5856d6;
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-  
-  .hero {
-    background: linear-gradient(135deg, #5856d6 0%, #7b68ee 100%);
-    color: #fff;
-    padding: 4rem 1.5rem;
-    text-align: center;
-  }
-  
-  .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    opacity: 0.95;
-  }
-  
-  .user-selection {
-    flex: 1;
-    padding: 4rem 1.5rem;
-    background-color: #f8f9fa;
-  }
-  
-  .user-selection-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .user-card {
-    background-color: #fff;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .user-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .user-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-  }
-  
-  .user-title {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .user-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  
-  .cta-button {
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #fff;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%;
-  }
-  
-  .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .student-button {
-    background-color: #5856d6;
-  }
-  
-  .teacher-button {
-    background-color: #7b68ee;
-  }
-  
-  .landing-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .user-selection-container {
-      grid-template-columns: 1fr;
-    }
-  }
+  .about-hand-icon,.about-text-icon,.about-arrow {font-size: 2rem;}
+  .landing-main { gap: 1rem; }
+  .feature-card { padding: 1.2rem 0.3rem; border-radius: 0.7rem; }
+  .landing-features { gap: 0.7rem; border-radius: 0.7rem;
+    margin-bottom: 0.6rem; }
+}
+
+/* Accessibility & focus styling for keyboard users */
+:focus-visible { outline: 2px solid #00C2CB !important; outline-offset: 2px; }
+
+/*
+  DESIGN CHOICES & ACCESSIBILITY:
+  - Chosen color contrast for clarity, WCAG compliance (#FFD60A, #00C2CB on #0A0A23).
+  - All interactive controls are accessible with keyboard and readable by screen readers (aria-label, role).
+  - Emojis as temp visual cues for features; for production, use SVGs for perfect clarity.
+  - Mobile-first breakpoints ensure readable and touch-friendly UI at any size.
+  - Font: Inter/Poppins—clean, friendly, and accessible.
+  - BEM naming for maintainability.
+*/

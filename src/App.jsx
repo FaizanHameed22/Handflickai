@@ -4,14 +4,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Import pages
-import LandingPage from './pages/LandingPage';
-import TeacherLogin from './pages/TeacherLogin';
-import StudentLogin from './pages/StudentLogin';
-import TeacherDashboard from './pages/TeacherDashboard';
-import StudentDashboard from './pages/StudentDashboard';
-import TeacherClassroom from './pages/TeacherClassroom';
-import StudentClassroom from './pages/StudentClassroom';
-import AITools from './pages/AITools';
+import LandingPage from './pages/LandingPage.jsx';
+import TeacherLogin from './pages/TeacherLogin.jsx';
+import StudentLogin from './pages/StudentLogin.jsx';
+import TeacherDashboard from './pages/TeacherDashboard.jsx';
+import StudentDashboard from './pages/StudentDashboard.jsx';
+import TeacherClassroom from './pages/TeacherClassroom.jsx';
+// import StudentClassroom from './pages/StudentClassroom.jsx';
+// import AITools from './pages/AITools.jsx';
 
 function App() {
   return (
@@ -24,8 +24,8 @@ function App() {
           <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/teacher-classroom" element={<TeacherClassroom />} />
-          <Route path="/student-classroom" element={<StudentClassroom />} />
-          <Route path="/ai-tools" element={<AITools />} />
+          {/* <Route path="/student-classroom" element={<StudentClassroom />} /> */}
+          {/* <Route path="/ai-tools" element={<AITools />} /> */}
         </Routes>
       </div>
     </Router>

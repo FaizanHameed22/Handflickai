@@ -1,8 +1,8 @@
 // src/pages/StudentDashboard.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from '../components/header/Header.jsx';
+import Sidebar from '../components/sidebar/Sidebar.jsx';
 import './StudentDashboard.css';
 
 function StudentDashboard() {
