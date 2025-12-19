@@ -13,7 +13,7 @@ function TeacherLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate login - in real app, validate credentials with backend
+   
     if (formData.email && formData.password) {
       navigate('/teacher-dashboard');
     }
@@ -61,7 +61,7 @@ function TeacherLogin() {
           </form>
           
           <div className="login-footer">
-            <p>Don't have an account? <a href="#signup">Sign up</a></p>
+            <p>Don't have an account? <a href="/teacher-signup">Sign up</a></p>
           </div>
         </div>
       </div>
