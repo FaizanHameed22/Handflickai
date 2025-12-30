@@ -111,7 +111,7 @@ function StudentDashboard() {
           </div>
 
           {/* Quick Access Section */}
-          <div className="quick-access-section">
+          {/* <div className="quick-access-section">
             <h2>Quick Access</h2>
             <div className="quick-access-grid">
               <button 
@@ -134,7 +134,7 @@ function StudentDashboard() {
                 <span>Messages</span>
               </button>
             </div>
-          </div>
+          </div> */}
         </main>
       </div>
     </div>

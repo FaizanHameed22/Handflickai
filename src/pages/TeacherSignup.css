@@ -1,4 +1,4 @@
- /* StudentSignup.css */
+/* TeacherSignup.css */
 
 * {
     margin: 0;
@@ -128,8 +128,8 @@
   
   .input-wrapper input:focus {
     outline: none;
-    border-color: #2B7FFF;
-    box-shadow: 0 0 0 3px rgba(43, 127, 255, 0.1);
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
   }
   
   .toggle-password {
@@ -156,7 +156,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(135deg, #2B7FFF 0%, #1e90ff 100%);
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -167,9 +167,9 @@
   }
   
   .signup-button:hover {
-    background: linear-gradient(135deg, #1e5fcc 0%, #1a7fd9 100%);
+    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(43, 127, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
   }
   
   .signup-button:active {
@@ -190,14 +190,14 @@
   }
   
   .signup-footer a {
-    color: #2B7FFF;
+    color: #8B5CF6;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s;
   }
   
   .signup-footer a:hover {
-    color: #1e5fcc;
+    color: #7C3AED;
     text-decoration: underline;
   }
   
@@ -268,4 +268,3 @@
       grid-template-columns: 1fr;
     }
   }
- 

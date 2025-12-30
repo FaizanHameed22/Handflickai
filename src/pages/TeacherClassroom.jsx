@@ -1,131 +1,182 @@
-// src/pages/TeacherClassroom.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/header/Header.jsx';
-import './TeacherClassroom.css';
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import "./TeacherClassroom.css";
 
-function TeacherClassroom() {
-  const navigate = useNavigate();
-  const [messages, setMessages] = useState([]);
-  const [isRecording, setIsRecording] = useState(false);
-  const [connectedStudents] = useState([
-    { id: 1, name: 'Alice Johnson', status: 'online' },
-    { id: 2, name: 'Bob Smith', status: 'online' },
-    { id: 3, name: 'Carol Davis', status: 'offline' }
-  ]);
+const TeacherClassroom = () => {
+  const [text, setText] = useState("");
+  const [signData, setSignData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [speechMessage, setSpeechMessage] = useState("");
+  
+  const recognitionRef = useRef(null);
 
-  // Simulate speech recognition - replace with real Web Speech API
-  const handleMicClick = () => {
-    setIsRecording(true);
-    
-    // Simulate speech-to-text conversion
-    setTimeout(() => {
-      const simulatedSpeech = "Hello class, today we will learn about fractions.";
-      
-      // Add teacher's message to chat
-      const newMessage = {
-        id: Date.now(),
-        sender: 'teacher',
-        type: 'speech-to-text',
-        text: simulatedSpeech,
-        signPlaceholder: '👋 📚 ➗', // Placeholder for sign language animation
-        timestamp: new Date().toLocaleTimeString()
+  useEffect(() => {
+    // Check if browser supports speech recognition
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = true;
+      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = 'en-US';
+
+      recognitionRef.current.onstart = () => {
+        setIsListening(true);
+        setSpeechMessage("🎤 Listening... Start speaking now!");
       };
-      
-      setMessages([...messages, newMessage]);
-      setIsRecording(false);
-    }, 2000);
+
+      recognitionRef.current.onresult = (event) => {
+        let interimTranscript = '';
+        let finalTranscript = '';
+
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            finalTranscript += transcript + ' ';
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+
+        if (finalTranscript) {
+          setText(prevText => prevText + finalTranscript);
+        }
+      };
+
+      recognitionRef.current.onerror = (event) => {
+        console.error('Speech recognition error:', event.error);
+        setIsListening(false);
+        setSpeechMessage("");
+        setError(`Speech recognition error: ${event.error}`);
+      };
+
+      recognitionRef.current.onend = () => {
+        setIsListening(false);
+        setSpeechMessage("");
+      };
+    }
+
+    return () => {
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+    };
+  }, []);
+
+  const handleSpeak = () => {
+    if (!recognitionRef.current) {
+      setError("Speech recognition is not supported in your browser.");
+      return;
+    }
+
+    if (isListening) {
+      // Stop listening
+      recognitionRef.current.stop();
+      setIsListening(false);
+      setSpeechMessage("");
+    } else {
+      // Start listening
+      setError("");
+      setSpeechMessage("Starting...");
+      try {
+        recognitionRef.current.start();
+      } catch (err) {
+        console.error('Error starting recognition:', err);
+        setError("Could not start speech recognition. Please try again.");
+        setSpeechMessage("");
+      }
+    }
+  };
+
+  const handleConvert = async () => {
+    if (!text.trim()) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/speech-to-sign/",
+        { text },
+        {
+          withCredentials: true, // VERY IMPORTANT for Django sessions
+        }
+      );
+
+      setSignData(response.data.sign_mappings);
+    } catch (err) {
+      setError("Failed to convert text. Are you logged in?");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="classroom-page">
-      <Header />
-      
-      <div className="classroom-header">
-        <div className="classroom-info">
-          <button className="back-button" onClick={() => navigate('/teacher-dashboard')}>
-            ← Back
-          </button>
-          <h1>Math 101 - Live Class</h1>
-          <span className="live-indicator">🔴 Live</span>
-        </div>
-      </div>
+    <div className="classroom-container">
+      <h1 className="classroom-title">Teacher Classroom</h1>
 
       <div className="classroom-layout">
-        {/* Main Chat Area */}
-        <div className="classroom-main">
-          <div className="messages-container">
-            {messages.length === 0 ? (
-              <div className="empty-chat">
-                <p>📢 Start speaking to communicate with your students</p>
-              </div>
-            ) : (
-              messages.map(message => (
-                <div key={message.id} className="message teacher-message">
-                  <div className="message-header">
-                    <strong>👨‍🏫 You</strong>
-                    <span className="message-time">{message.timestamp}</span>
-                  </div>
-                  <div className="message-content">
-                    <div className="message-text">
-                      <p>{message.text}</p>
-                    </div>
-                    <div className="message-sign">
-                      <label>Sign Language:</label>
-                      <div className="sign-animation">
-                        {message.signPlaceholder}
-                      </div>
-                      <small>Sign animation shown to students</small>
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
+        {/* LEFT SIDE */}
+        <div className="classroom-left">
+          <h2>Teacher Input</h2>
+
+          <textarea
+            placeholder="Speak or type text here..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+
+          <div className="button-group">
+            <button 
+              className={`primary-btn ${isListening ? 'listening' : ''}`}
+              onClick={handleSpeak}
+            >
+              {isListening ? '🔴 Stop Speaking' : '🎤 Speak'}
+            </button>
+            <button className="secondary-btn" onClick={handleConvert}>
+              Convert to Sign
+            </button>
           </div>
 
-          {/* Input Controls */}
-          <div className="input-controls">
-            <button 
-              className={`mic-button ${isRecording ? 'recording' : ''}`}
-              onClick={handleMicClick}
-              disabled={isRecording}
-            >
-              {isRecording ? (
-                <>
-                  <span className="recording-pulse"></span>
-                  🎤 Recording...
-                </>
-              ) : (
-                <>🎤 Click to Speak</>
-              )}
-            </button>
-            <p className="input-hint">
-              {/* Where to integrate: Connect to Web Speech API for real-time speech recognition */}
-              Speech will be converted to text and sign language for students
-            </p>
-          </div>
+          {speechMessage && <p className="speech-message">{speechMessage}</p>}
+          {error && <p className="error-text">{error}</p>}
         </div>
 
-        {/* Students Panel */}
-        <aside className="students-panel">
-          <h3>Connected Students ({connectedStudents.filter(s => s.status === 'online').length})</h3>
-          <div className="students-list">
-            {connectedStudents.map(student => (
-              <div key={student.id} className="student-card">
-                <div className="student-avatar">👤</div>
-                <div className="student-info">
-                  <p className="student-name">{student.name}</p>
-                  <span className={`student-status ${student.status}`}>
-                    {student.status === 'online' ? '🟢 Online' : '⚫ Offline'}
-                  </span>
+        {/* RIGHT SIDE */}
+        <div className="classroom-right">
+          <h2>Animated Output:</h2>
+
+          {loading ? (
+            <p className="placeholder-text">Processing...</p>
+          ) : signData.length === 0 ? (
+            <p className="placeholder-text">
+               Output will appear here
+            </p>
+          ) : (
+            <div className="sign-output">
+              {signData.map((item, index) => (
+                <div key={index} className="sign-card">
+                  {item.available ? (
+                    <video
+                      src={`http://127.0.0.1:8000${item.video_path}`}
+                      controls
+                      autoPlay
+                      muted
+                      className="sign-video"
+                    />
+                  ) : (
+                    <div className="sign-video">❌</div>
+                  )}
+                  <p>{item.token}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </aside>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default TeacherClassroom;

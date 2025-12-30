@@ -12,6 +12,7 @@ import StudentDashboard from './pages/StudentDashboard.jsx';
 import TeacherClassroom from './pages/TeacherClassroom.jsx';
 import TeacherSignup from './pages/TeacherSignup.jsx';  // Fix filename typo: should be 'TeacherSignup'
 import StudentSignup from './pages/StudentSignup.jsx';
+import NewClassroom from  './pages/NewClassroom.jsx';
 // import StudentClassroom from './pages/StudentClassroom.jsx';
 // import AITools from './pages/AITools.jsx';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/teacher-classroom" element={<TeacherClassroom />} />
           <Route path="/teacher-signup" element={<TeacherSignup />} />
           <Route path="/student-signup" element={<StudentSignup />} />
+          <Route path="/new-classroom" element={<NewClassroom />} />
           {/* <Route path="/ai-tools" element={<AITools />} /> */}
         </Routes>
       </div>

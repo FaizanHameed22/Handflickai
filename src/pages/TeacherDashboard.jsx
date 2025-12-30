@@ -161,7 +161,7 @@ function TeacherDashboard() {
               className="start-class-button"
               onClick={handleStartClass}
             >
-              🎓 Start Class
+               Start Class
             </button>
           </div>
         </main>
